@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.12/c3.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.6.12/c3.min.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)"></script>
+    <script type="text/javascript" src="app.js"></script>
+  </head>
+  <body onload="init()">
+    <button onclick="run()">Run</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="reset()">Reset</button>
+
+    <div id="chart" style="width: 100%; height: 400px;"></div>
+    <div id="inputs">
+      <label>
+        Epsilon: 
+        <input type="number" step="0.1" value="0.1" min="0" max="1" onchange="changeEpsilon(this.value)"/>
+        
+      </label>
+
+      <label>
+        Min Visits:
+        <input type="number" value="10" min="1" max="100" onchange="changeMinVisits(this.value)" />
+      </label>
+
+      <label>
+        Delay:
+        <input type="number" value="10" min="0" step="10" max="1000" onchange="changeDelay(this.value)" />
+      </label>
+
+      <label>
+        iterations
+        <input type="number" min="500" max="100000" value="1000" step="500" onchange="changeIterations(this.value)" />
+      </label>
+      <div id="variants">
+        Variants:
+        
+      </div>
+      <button onclick="addVariant()">Add Variant</button>
+    </div>
+    <div id="output">
+      <div>
+          Average Total Rewards: <b><span id="outputTotalRewardAverage" /></b>
+      </div>
+      <div>
+          Average Total Regret: <b><span id="outputTotalRegretAverage" /></b>
+      </div>
+    </div>
+  </body>
+</html>
